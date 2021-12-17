@@ -1,3 +1,4 @@
+import { entireRouteForTime } from '../core/entireRoute.js';
 import {
   stationsList,
   lineTwoForTime,
@@ -6,10 +7,14 @@ import {
 } from '../init.js';
 
 export const checkStationCorrect = (departureStation, arrivalStation) => {
-  checkStationLength(departureStation, arrivalStation);
-  checkStationExistence(departureStation, arrivalStation);
-  checkStationEqual(departureStation, arrivalStation);
-  checkStationNotConnect(departureStation, arrivalStation);
+  if (
+    checkStationLength(departureStation, arrivalStation) ||
+    checkStationExistence(departureStation, arrivalStation) ||
+    checkStationEqual(departureStation, arrivalStation) ||
+    checkStationNotConnect(departureStation, arrivalStation)
+  ) {
+    return true;
+  }
 };
 
 const checkStationLength = (departureStation, arrivalStation) => {
@@ -28,14 +33,8 @@ const checkStationEqual = (departureStation, arrivalStation) => {
 };
 
 const checkStationNotConnect = (departureStation, arrivalStation) => {
-  if (
-    lineTwoForTime.findShortestPath(departureStation, arrivalStation) ===
-      undefined &&
-    lineThreeForTime.findShortestPath(departureStation, arrivalStation) ===
-      undefined &&
-    sinbundangLineForTime.findShortestPath(departureStation, arrivalStation) ===
-      undefined
-  ) {
-    return true;
-  }
+  return (
+    entireRouteForTime.findShortestPath(departureStation, arrivalStation) ===
+    undefined
+  );
 };

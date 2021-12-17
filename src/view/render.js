@@ -4,9 +4,11 @@ import { $ } from '../utils/dom.js';
 export const renderHeader = () => {
   const header = document.createElement('header');
   const main = document.createElement('main');
+  const footer = document.createElement('footer');
   header.innerHTML = `<h1>${TITLE}</h1>`;
   $('#app').appendChild(header);
   $('#app').appendChild(main);
+  $('#app').appendChild(footer);
 };
 
 export const renderInputForm = () => {
@@ -29,7 +31,39 @@ export const renderInputForm = () => {
         </form>
       `;
   };
-  $('main').innerHTML += template();
+  $('main').innerHTML = template();
 };
 
-export const renderResult = () => {};
+export const renderResult = result => {
+  renderResultTable();
+  renderResultTableItem(result);
+};
+
+export const renderResultTable = () => {
+  const template = () => {
+    return `
+        <h2>결과</h2>
+        <h3>최단거리</h3>
+        <table>
+          <thead>
+            <th>총 거리</th>
+            <th>총 소요 시간</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+    `;
+  };
+  $('footer').innerHTML = template();
+};
+
+export const renderResultTableItem = result => {
+  const template = () => {
+    return `
+        <td>${result[2]}km</td>
+        <td>${result[1]}분</td>
+        <tr>
+        <td colspan="2">${result[0]}</td>
+    `;
+  };
+  $('tbody').innerHTML = template();
+};

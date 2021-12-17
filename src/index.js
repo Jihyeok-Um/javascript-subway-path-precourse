@@ -1,13 +1,5 @@
 import { $ } from './utils/dom.js';
 import { renderHeader, renderInputForm } from './view/render.js';
-import {
-  lineTwoForTime,
-  lineTwoForDistantce,
-  lineThreeForTime,
-  lineThreeForDistantce,
-  sinbundangLineForTime,
-  sinbundangLineForDistantce,
-} from './init.js';
 import { getDistanceResult, getTimeResult } from './core/getResult.js';
 
 function App() {
@@ -19,9 +11,9 @@ function App() {
     e.preventDefault();
 
     if ($('#distance').checked === true) {
-      getTimeResult();
-    } else if ($('#time').checked === true) {
       getDistanceResult();
+    } else if ($('#time').checked === true) {
+      getTimeResult();
     }
   };
 

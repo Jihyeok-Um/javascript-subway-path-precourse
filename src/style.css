@@ -6,3 +6,8 @@ div {
 #app {
     margin: 0px;
 }
+
+th, td{
+    border: solid 1px black;
+    padding: 10px;
+}

@@ -4,9 +4,9 @@ export const lineTwoForTime = new Dijkstra();
 export const lineThreeForTime = new Dijkstra();
 export const sinbundangLineForTime = new Dijkstra();
 
-export const lineTwoForDistantce = new Dijkstra();
-export const lineThreeForDistantce = new Dijkstra();
-export const sinbundangLineForDistantce = new Dijkstra();
+export const lineTwoForDistance = new Dijkstra();
+export const lineThreeForDistance = new Dijkstra();
+export const sinbundangLineForDistance = new Dijkstra();
 
 export const stationsList = [
   '교대',
@@ -64,7 +64,7 @@ export const routeTime = {
   ],
 };
 
-export const routeDistantce = {
+export const routeDistance = {
   LINE_TWO: [
     [0, 2, 4],
     [2, 0, 2],
@@ -96,10 +96,10 @@ for (let i = 0; i < route.LINE_TWO.length; i++) {
 
 for (let i = 0; i < route.LINE_TWO.length; i++) {
   for (let j = 0; j < route.LINE_TWO.length; j++) {
-    lineTwoForDistantce.addEdge(
+    lineTwoForDistance.addEdge(
       route.LINE_TWO[i],
       route.LINE_TWO[j],
-      routeDistantce.LINE_TWO[i][j],
+      routeDistance.LINE_TWO[i][j],
     );
   }
 }
@@ -117,10 +117,10 @@ for (let i = 0; i < route.LINE_THREE.length; i++) {
 
 for (let i = 0; i < route.LINE_THREE.length; i++) {
   for (let j = 0; j < route.LINE_THREE.length; j++) {
-    lineThreeForDistantce.addEdge(
+    lineThreeForDistance.addEdge(
       route.LINE_THREE[i],
       route.LINE_THREE[j],
-      routeDistantce.LINE_THREE[i][j],
+      routeDistance.LINE_THREE[i][j],
     );
   }
 }
@@ -138,10 +138,10 @@ for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
 
 for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
   for (let j = 0; j < route.SINBUNGDANG_LINE.length; j++) {
-    sinbundangLineForDistantce.addEdge(
+    sinbundangLineForDistance.addEdge(
       route.SINBUNGDANG_LINE[i],
       route.SINBUNGDANG_LINE[j],
-      routeDistantce.SINBUNGDANG_LINE[i][j],
+      routeDistance.SINBUNGDANG_LINE[i][j],
     );
   }
 }
