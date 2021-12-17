@@ -2,12 +2,21 @@ import Dijkstra from './utils/Dijkstra.js';
 
 export const lineTwoForTime = new Dijkstra();
 export const lineThreeForTime = new Dijkstra();
-export const sinbungdangLineForTime = new Dijkstra();
+export const sinbundangLineForTime = new Dijkstra();
 
 export const lineTwoForDistantce = new Dijkstra();
 export const lineThreeForDistantce = new Dijkstra();
-export const sinbungdangLineForDistantce = new Dijkstra();
+export const sinbundangLineForDistantce = new Dijkstra();
 
+export const stationsList = [
+  '교대',
+  '강남',
+  '역삼',
+  '남부터미널',
+  '양재',
+  '양재시민의숲',
+  '매봉',
+];
 export const stations = {
   GYODAE: '교대',
   GANGNAM: '강남',
@@ -118,7 +127,7 @@ for (let i = 0; i < route.LINE_THREE.length; i++) {
 //신분당선
 for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
   for (let j = 0; j < route.SINBUNGDANG_LINE.length; j++) {
-    sinbungdangLineForTime.addEdge(
+    sinbundangLineForTime.addEdge(
       route.SINBUNGDANG_LINE[i],
       route.SINBUNGDANG_LINE[j],
       routeTime.SINBUNGDANG_LINE[i][j],
@@ -128,7 +137,7 @@ for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
 
 for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
   for (let j = 0; j < route.SINBUNGDANG_LINE.length; j++) {
-    sinbungdangLineForDistantce.addEdge(
+    sinbundangLineForDistantce.addEdge(
       route.SINBUNGDANG_LINE[i],
       route.SINBUNGDANG_LINE[j],
       routeDistantce.SINBUNGDANG_LINE[i][j],
