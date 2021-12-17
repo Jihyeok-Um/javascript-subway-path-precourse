@@ -2,11 +2,11 @@ import Dijkstra from './utils/Dijkstra.js';
 
 export const lineTwoForTime = new Dijkstra();
 export const lineThreeForTime = new Dijkstra();
-export const shinbungdangLineForTime = new Dijkstra();
+export const sinbungdangLineForTime = new Dijkstra();
 
 export const lineTwoForDistantce = new Dijkstra();
 export const lineThreeForDistantce = new Dijkstra();
-export const shinbungdangLineForDistantce = new Dijkstra();
+export const sinbungdangLineForDistantce = new Dijkstra();
 
 export const stations = {
   GYODAE: '교대',
@@ -37,20 +37,20 @@ export const route = {
 
 export const routeTime = {
   LINE_TWO: [
-    [0, 3, 6],
+    [0, 3, 100],
     [3, 0, 3],
-    [6, 3, 0],
+    [100, 3, 0],
   ],
   LINE_THREE: [
-    [0, 2, 7, 8],
-    [2, 0, 5, 6],
-    [7, 5, 0, 1],
-    [8, 6, 1, 0],
+    [0, 2, 100, 100],
+    [2, 0, 5, 100],
+    [100, 5, 0, 1],
+    [100, 100, 1, 0],
   ],
   SINBUNGDANG_LINE: [
-    [0, 8, 11],
+    [0, 8, 100],
     [8, 0, 3],
-    [11, 3, 0],
+    [100, 3, 0],
   ],
 };
 
@@ -73,15 +73,65 @@ export const routeDistantce = {
   ],
 };
 
+//2호선
 for (let i = 0; i < route.LINE_TWO.length; i++) {
   for (let j = 0; j < route.LINE_TWO.length; j++) {
-    if (i === j) {
-      continue;
-    }
-    lineTwoForTime(
+    lineTwoForTime.addEdge(
       route.LINE_TWO[i],
       route.LINE_TWO[j],
       routeTime.LINE_TWO[i][j],
+    );
+  }
+}
+
+for (let i = 0; i < route.LINE_TWO.length; i++) {
+  for (let j = 0; j < route.LINE_TWO.length; j++) {
+    lineTwoForDistantce.addEdge(
+      route.LINE_TWO[i],
+      route.LINE_TWO[j],
+      routeDistantce.LINE_TWO[i][j],
+    );
+  }
+}
+
+//3호선
+for (let i = 0; i < route.LINE_THREE.length; i++) {
+  for (let j = 0; j < route.LINE_THREE.length; j++) {
+    lineThreeForTime.addEdge(
+      route.LINE_THREE[i],
+      route.LINE_THREE[j],
+      routeTime.LINE_THREE[i][j],
+    );
+  }
+}
+
+for (let i = 0; i < route.LINE_THREE.length; i++) {
+  for (let j = 0; j < route.LINE_THREE.length; j++) {
+    lineThreeForDistantce.addEdge(
+      route.LINE_THREE[i],
+      route.LINE_THREE[j],
+      routeDistantce.LINE_THREE[i][j],
+    );
+  }
+}
+
+//신분당선
+for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
+  for (let j = 0; j < route.SINBUNGDANG_LINE.length; j++) {
+    sinbungdangLineForTime.addEdge(
+      route.SINBUNGDANG_LINE[i],
+      route.SINBUNGDANG_LINE[j],
+      routeTime.SINBUNGDANG_LINE[i][j],
+    );
+  }
+}
+
+for (let i = 0; i < route.SINBUNGDANG_LINE.length; i++) {
+  for (let j = 0; j < route.SINBUNGDANG_LINE.length; j++) {
+    sinbungdangLineForDistantce.addEdge(
+      route.SINBUNGDANG_LINE[i],
+      route.SINBUNGDANG_LINE[j],
+      routeDistantce.SINBUNGDANG_LINE[i][j],
     );
   }
 }

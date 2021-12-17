@@ -1,3 +1,10 @@
-import { lineTwoTime } from './init.js';
+import {
+  lineTwoForTime,
+  lineTwoForDistantce,
+  lineThreeForTime,
+  lineThreeForDistantce,
+  sinbungdangLineForTime,
+  sinbungdangLineForDistantce,
+} from './init.js';
 
-console.log(lineTwoTime);
+console.log(lineTwoForTime.findShortestPath('역삼', '교대'));
