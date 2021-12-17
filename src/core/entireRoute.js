@@ -5,28 +5,41 @@ export const entireRouteForTime = new Dijkstra();
 export const entireRouteForDistance = new Dijkstra();
 
 export const entireRouteTime = [
-  [0, 3, 100, 5, 100, 100, 100],
-  [3, 0, 3, 100, 8, 100, 100],
-  [100, 3, 0, 100, 100, 3, 100],
-  [2, 100, 100, 0, 100, 100, 100],
-  [100, 8, 100, 5, 0, 3, 1],
-  [100, 100, 100, 100, 3, 0, 100],
-  [100, 100, 100, 100, 1, 100, 0],
+  [0, 3, 0, 2, 0, 0, 0],
+  [3, 0, 3, 0, 8, 0, 0],
+  [0, 3, 0, 0, 0, 0, 0],
+  [2, 0, 0, 0, 5, 0, 0],
+  [0, 8, 0, 5, 0, 3, 1],
+  [0, 0, 0, 0, 3, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0],
 ];
 
 export const entireRouteDistance = [
-  [0, 2, 100, 3, 100, 100, 100],
-  [2, 0, 2, 100, 2, 100, 100],
-  [100, 2, 0, 100, 100, 100, 100],
-  [3, 100, 100, 0, 6, 100, 100],
-  [100, 2, 100, 6, 0, 10, 1],
-  [100, 100, 100, 100, 10, 0, 100],
-  [100, 100, 100, 100, 1, 100, 0],
+  [0, 2, 0, 3, 0, 0, 0],
+  [2, 0, 2, 0, 2, 0, 0],
+  [0, 2, 0, 0, 0, 0, 0],
+  [3, 0, 0, 0, 6, 0, 0],
+  [0, 2, 0, 6, 0, 10, 1],
+  [0, 0, 0, 0, 10, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0],
 ];
+
+export const checkAddEdge = (
+  dijkstra,
+  departureStation,
+  arrivalStation,
+  cost,
+) => {
+  if (cost === 0 || cost === 100) {
+    return;
+  }
+  dijkstra.addEdge(departureStation, arrivalStation, cost);
+};
 
 for (let i = 0; i < entireRouteTime.length; i++) {
   for (let j = 0; j < entireRouteTime.length; j++) {
-    entireRouteForTime.addEdge(
+    checkAddEdge(
+      entireRouteForTime,
       stationsList[i],
       stationsList[j],
       entireRouteTime[i][j],
@@ -36,7 +49,8 @@ for (let i = 0; i < entireRouteTime.length; i++) {
 
 for (let i = 0; i < entireRouteDistance.length; i++) {
   for (let j = 0; j < entireRouteDistance.length; j++) {
-    entireRouteForDistance.addEdge(
+    checkAddEdge(
+      entireRouteForDistance,
       stationsList[i],
       stationsList[j],
       entireRouteDistance[i][j],
