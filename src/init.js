@@ -17,6 +17,7 @@ export const stationsList = [
   '양재시민의숲',
   '매봉',
 ];
+
 export const stations = {
   GYODAE: '교대',
   GANGNAM: '강남',

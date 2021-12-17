@@ -1,12 +1,8 @@
 import { $ } from '../utils/dom.js';
 import { ALERT_MESSAGE } from '../constants/constants.js';
-import {
-  stationsList,
-  lineTwoForTime,
-  lineThreeForTime,
-  sinbundangLineForTime,
-} from '../init.js';
 import { renderResult } from '../view/render.js';
+import { checkStationCorrect } from '../utils/checkValue.js';
+import { entireRouteForTime, entireRouteForDistantce } from './entireRoute.js';
 
 export const getTimeResult = () => {
   const departureStation = $('#departure-station-name-input').value;
@@ -15,6 +11,7 @@ export const getTimeResult = () => {
     window.alert(ALERT_MESSAGE);
     return;
   }
+  result(departureStation, arrivalStation);
   renderResult();
 };
 
@@ -28,37 +25,9 @@ export const getDistanceResult = () => {
   renderResult();
 };
 
-const checkStationCorrect = (departureStation, arrivalStation) => {
-  checkStationLength(departureStation, arrivalStation);
-  checkStationExistence(departureStation, arrivalStation);
-  checkStationEqual(departureStation, arrivalStation);
-  checkStationNotConnect(departureStation, arrivalStation);
-};
-
-const checkStationLength = (departureStation, arrivalStation) => {
-  return departureStation.length < 2 || arrivalStation.length < 2;
-};
-
-const checkStationExistence = (departureStation, arrivalStation) => {
-  return !(
-    stationsList.includes(departureStation) &&
-    stationsList.includes(arrivalStation)
+export const result = (departureStation, arrivalStation) => {
+  console.log(departureStation, arrivalStation);
+  console.log(
+    entireRouteForTime.findShortestPath(departureStation, arrivalStation),
   );
-};
-
-const checkStationEqual = (departureStation, arrivalStation) => {
-  return departureStation === arrivalStation;
-};
-
-const checkStationNotConnect = (departureStation, arrivalStation) => {
-  if (
-    lineTwoForTime.findShortestPath(departureStation, arrivalStation) ===
-      undefined &&
-    lineThreeForTime.findShortestPath(departureStation, arrivalStation) ===
-      undefined &&
-    sinbundangLineForTime.findShortestPath(departureStation, arrivalStation) ===
-      undefined
-  ) {
-    return true;
-  }
 };
