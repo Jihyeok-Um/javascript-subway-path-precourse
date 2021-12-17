@@ -1,2 +1,3 @@
-import Dijkstra from './utils/Dijkstra.js';
-const dijkstra = new Dijkstra();
+import { lineTwoTime } from './init.js';
+
+console.log(lineTwoTime);
